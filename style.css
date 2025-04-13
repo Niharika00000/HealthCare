@@ -1,0 +1,227 @@
+
+:root {
+    --grey: #f5f5f5;
+    --blue: #3d88f9;
+    --black: #1a1a1a;
+}
+
+body.chat-open {
+    .chat-window {
+        display: flex;
+    }
+}
+
+.chat-button {
+    /* position: absolute;
+    bottom: 60px;
+    right: 70px; */
+    position: fixed; /* Change from absolute to fixed */
+    bottom: 60px;    /* Adjusted bottom positioning */
+    right: 70px;
+    z-index: 998;
+    /* background-color: var(--black);
+    color: white; */
+    height: 80px;
+    width: 80px;
+    /* //border-radius: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        width: 150px;
+        filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.814));
+        
+    }
+
+    /* &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    } */
+}
+
+.chat-window {
+
+    * {
+        font-family: "Nunito", sans-serif;
+    }
+
+    display: none;
+    background: transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    /* position: absolute; */
+    position: fixed;
+    z-index: 999;
+    bottom: 60px;
+    right: 20px; 
+    height: 600px;
+    width: 360px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .close {
+        border: none;
+        padding: 8px 0;
+        background-color: var(--black);
+       background: transparent;
+        color: rgb(0, 0, 0);
+        /* border-radius: 20px 20px 0 0; */
+        cursor: pointer;
+        width: 60px;
+    }
+
+    .chat {
+        flex: 1;
+        padding: 0 8px;
+        overflow-y: scroll;
+
+        p {
+            border-radius: 20px;
+            width: 80%;
+            margin: 8px 0;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        div.model {
+
+            p {
+               background-color: rgba(255, 255, 255, 0.2);
+               /* background: transparent; */
+               box-shadow: rgba(0, 0, 0, 0.371) 0px 3px 8px;
+               border: 1px solid rgba(255, 255, 255, 0.499);
+               /* backdrop-filter: blur(500px); */
+               border-radius: 0 20px 20px 20px;
+               color: rgb(0, 0, 0);
+            }
+
+            
+        }
+
+        div.user {
+            display: flex;
+            justify-content: flex-end;
+
+            p {
+                background-color: var(--blue);
+                color: white;
+                border-radius: 20px 0 20px 20px;
+                box-shadow: rgba(0, 0, 0, 0.371) 0px 3px 8px;
+            }
+        }
+
+        div.error {
+            p {
+                font-size: 14px;
+                text-align: center;
+                color: red;
+            }
+        }
+        
+    }
+
+    .input-area {
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 8px;
+        border-top: 1px solid lightgray;
+
+        input {
+            height: 40px;
+            flex: 1;
+            border: none;
+            background-color: var(--grey);
+            border-radius: 20px;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            border: none;
+            margin-left: 12px;
+            background-color: var(--blue);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            img {
+                width: 18px;
+            }
+
+            &:hover {
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+        }
+    }
+}
+
+
+
+.loader {
+    width: 40px;
+    opacity: 0.4;
+    aspect-ratio: 4;
+    background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;
+    clip-path: inset(0 100% 0 0);
+    animation: l1 1.5s steps(4) infinite;
+  }
+  @keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}
+
+  /* //heartbeat_anim */
+  #heartbeat-icon {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: heartbeat 1.5s infinite;
+    transition: all 0.3s ease;
+}
+
+#heartbeat-icon img {
+    width:100%;
+    height: 150px;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    80% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* This will stop the animation when the element is clicked */
+#heartbeat-icon.clicked {
+    animation: none;
+    transform: scale(1); /* Keeps the icon in a normal size */
+}
+#heartbeat-icon.hidden {
+    display: none;
+}
+  
