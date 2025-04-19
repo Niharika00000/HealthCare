@@ -205,7 +205,7 @@ Example: "Thank you for reaching out! Your appointment with Dr. Reddy in Bangalo
 `
 
 
-const API_KEY = "AIzaSyDiz_mbh6sPkl2StwRbwXqGTgUvzkcgeeE";
+const API_KEY = ""; // "Write your API";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({
     model: "gemini-1.5-pro",
